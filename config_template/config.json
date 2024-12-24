@@ -23,16 +23,16 @@
   
   "dns": {
     "servers": [
-      {"tag": "proxyDns", "address": "local", "address_resolver": "defaultDns", "strategy": "ipv4_only", "disable_cache": false, "detour": "🚀 节点选择"},
-      {"tag": "localDns", "address": "223.5.5.5", "address_resolver": "defaultDns", "strategy": "prefer_ipv6", "disable_cache": false, "detour": "🎯 全球直连"},
-      {"tag": "defaultDns", "address": "223.5.5.5", "strategy": "ipv4_only", "disable_cache": false, "detour": "🎯 全球直连"}
+      {"tag": "proxyDns", "address": "local", "address_resolver": "defaultDns", "strategy": "ipv4_only", "detour": "🚀 节点选择"},
+      {"tag": "localDns", "address": "223.5.5.5", "address_resolver": "defaultDns", "strategy": "prefer_ipv6", "detour": "🎯 全球直连"},
+      {"tag": "defaultDns", "address": "223.5.5.5", "strategy": "ipv4_only", "detour": "🎯 全球直连"}
     ],
     "rules": [
       { "outbound": "any", "server": "defaultDns", "disable_cache": true },
-      { "clash_mode": "direct", "server": "localDns" },
-      { "clash_mode": "global", "server": "proxyDns" },
-      { "rule_set": "geosite-cn", "server": "localDns" },
-      { "rule_set": "geosite-geolocation-!cn", "server": "proxyDns" }
+      { "clash_mode": "direct", "server": "localDns", "disable_cache": false },
+      { "clash_mode": "global", "server": "proxyDns", "disable_cache": false },
+      { "rule_set": "geosite-cn", "server": "localDns", "disable_cache": false },
+      { "rule_set": "geosite-geolocation-!cn", "server": "proxyDns", "disable_cache": false }
     ],
     "final": "localDns",
     "strategy": "ipv4_only"
